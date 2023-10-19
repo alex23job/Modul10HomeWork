@@ -6,6 +6,27 @@ using System.Threading.Tasks;
 
 namespace ConsultantWpfApp
 {
+    public class MyLogView
+    {
+        public DateTime DateUpdate { get; set; }
+        public string Fields { get; set; }
+        public string ModeUpdate { get; set; }
+        public string UserLogin { get; set; }
+        public string UserPosition { get; set; }
+        public MyLogView(string csvStr, string sep = "#")
+        {
+            string[] s = csvStr.Split(sep[0]);
+            if (s.Length == 5)
+            {
+                DateUpdate = DateTime.Parse(s[0]);
+                Fields = s[1];
+                ModeUpdate = s[2];
+                UserLogin = s[4];
+                UserPosition = s[3];
+            }
+        }
+    }
+
     public class LogPersonUpdate
     {
         DateTime DateUpdate { get; set; }

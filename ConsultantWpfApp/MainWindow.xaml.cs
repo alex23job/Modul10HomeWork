@@ -92,6 +92,7 @@ namespace ConsultantWpfApp
                             btnDel.IsEnabled = userRights.IsAddingPerson();
                             btnEdit.IsEnabled = true;
                             btnEditUsers.Visibility = userRights.IsEditingUser() ? Visibility.Visible : Visibility.Hidden;
+                            btnViewLog.Visibility = userRights.IsEditingUser() ? Visibility.Visible : Visibility.Hidden;
                         }
                         else
                         {
@@ -99,6 +100,7 @@ namespace ConsultantWpfApp
                             btnDel.IsEnabled = false;
                             btnEdit.IsEnabled = false;
                             btnEditUsers.Visibility = Visibility.Hidden;
+                            btnViewLog.Visibility = Visibility.Hidden;
                         }
                         return;
                     }
@@ -316,6 +318,22 @@ namespace ConsultantWpfApp
             if (newPer.updateInfo == null)
             {
                 newPer.updateInfo = oldPer.updateInfo;
+            }
+        }
+
+        private void btnViewLogClick(object sender, RoutedEventArgs e)
+        {
+            if (File.Exists(pathUpdateInfo))
+            {
+                string[] arrStr = File.ReadAllLines(pathUpdateInfo);
+                List<MyLogView> list = new List<MyLogView>();
+                for (int i = 0; i < arrStr.Length; i++)
+                {
+                    list.Add(new MyLogView(arrStr[i]));
+                }
+                ViewLogWindow vlw = new ViewLogWindow();
+                vlw.SetSource(list);
+                vlw.ShowDialog();
             }
         }
     }

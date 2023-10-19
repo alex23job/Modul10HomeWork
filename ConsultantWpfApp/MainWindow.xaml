@@ -33,7 +33,8 @@
         </ListBox>
         <Grid HorizontalAlignment="Stretch" Height="Auto" Margin="10,3,10,3" Grid.Row="0" VerticalAlignment="Stretch" Width="Auto">
             <Button x:Name="btnEditUsers" Content="Пользователи" HorizontalAlignment="Left" VerticalAlignment="Center" Width="150" Click="btnEditUsersClick" Visibility="Hidden"/>
-            <Label x:Name="userName" Margin="100,0,100,0" HorizontalAlignment="Right"/>
+            <Button x:Name="btnViewLog" Content="Лог" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50" Click="btnViewLogClick" Visibility="Hidden" Margin="160,0,0,0"/>
+            <Label x:Name="userName" Margin="170,0,100,0" HorizontalAlignment="Right"/>
             <Button x:Name="btnLogin" Content="Войти" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Center" Width="90" Click="Button_Click"/>
         </Grid>
         <Grid Margin="20,3" Grid.Row="2">
