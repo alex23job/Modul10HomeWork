@@ -70,6 +70,7 @@
     <Compile Include="ChangePasswordWindow.xaml.cs">
       <DependentUpon>ChangePasswordWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LogPersonUpdate.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="PersonEditWindow.xaml.cs">
       <DependentUpon>PersonEditWindow.xaml</DependentUpon>

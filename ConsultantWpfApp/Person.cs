@@ -39,6 +39,8 @@ namespace ConsultantWpfApp
         /// </summary>
         public List<int> IdProducts = null;
 
+        public LogPersonUpdate updateInfo = null;
+
         //[XmlIgnore]
         public string Count => (IdProducts != null) ? IdProducts.Count.ToString() : "0";
 

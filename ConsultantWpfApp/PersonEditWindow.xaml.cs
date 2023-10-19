@@ -48,7 +48,7 @@ namespace ConsultantWpfApp
         public bool SetParam(Person pr, UserData us)
         {
             user = us;
-            per = pr;
+            per = new Person(pr.Name, pr.LastName, pr.SecondName, pr.Pasport, pr.Tlf);
             IUserRights userRights = us as IUserRights;
             if (userRights == null)
             {
@@ -65,6 +65,10 @@ namespace ConsultantWpfApp
             txtSecondName.IsEnabled = userRights.IsEditingField("SecondName");
             txtPasport.IsEnabled = userRights.IsEditingField("Pasport");
             txtTlf.IsEnabled = userRights.IsEditingField("Tlf");
+            if (pr.updateInfo != null)
+            {
+                txtUpdate.Text = pr.updateInfo.ToString();
+            }
             return true;
         }
 

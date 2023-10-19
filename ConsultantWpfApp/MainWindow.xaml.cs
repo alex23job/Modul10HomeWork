@@ -31,6 +31,8 @@ namespace ConsultantWpfApp
 
         UserData currentUser = null;
 
+        string pathUpdateInfo = "UpdateInfoLog.csv";
+
         public MainWindow()
         {
             InitializeComponent();
@@ -208,16 +210,19 @@ namespace ConsultantWpfApp
             if (pw.ShowDialog() == true)
             {
                 dbClients.Add(new Person(pw.per.Name, pw.per.LastName, pw.per.SecondName, pw.per.Pasport, pw.per.Tlf));
+                SaveUpdateInfo("add", dbClients[dbClients.Count - 1]);
             }
         }
 
         private void EditClick(object sender, RoutedEventArgs e)
         {
             //PersonWindow pw = new PersonWindow();
+            if (listDbView.SelectedItem == null) return;
             PersonEditWindow pw = new PersonEditWindow();
             if (!pw.SetParam((Person)listDbView.SelectedItem, currentUser)) return;
             if (pw.ShowDialog() == true)
             {
+                SaveUpdateInfo("edit", dbClients[listDbView.SelectedIndex], pw.GetPerson());
                 dbClients[listDbView.SelectedIndex] = pw.GetPerson();
                 listDbView.Items.Refresh();
             }
@@ -225,9 +230,11 @@ namespace ConsultantWpfApp
 
         private void DelClick(object sender, RoutedEventArgs e)
         {
+            if (listDbView.SelectedItem == null) return;
             string info = string.Format("\"Фамилия: {0}   тлф: {1}\"", ((Person)listDbView.SelectedItem).Name, ((Person)listDbView.SelectedItem).Tlf);
             if (MessageBox.Show($"Выбрана запись клиента : {info}\n\nУдалить запись ?", "Удаление записи клиента", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
+                SaveUpdateInfo("del", dbClients[listDbView.SelectedIndex]);
                 dbClients.RemoveAt(listDbView.SelectedIndex);
             }
         }
@@ -239,6 +246,76 @@ namespace ConsultantWpfApp
             if (uw.ShowDialog() == true)
             {
 
+            }
+        }
+
+        private void SaveUpdateInfo(string mode, Person oldPer, Person newPer = null)
+        {
+            if (newPer == null)
+            {
+                oldPer.updateInfo = new LogPersonUpdate("Все поля", mode, currentUser.UserLogin, UserPosition.GetPosition(currentUser.Rule));
+            }
+            else
+            {
+                if (oldPer.Name != newPer.Name)
+                {
+                    newPer.updateInfo = new LogPersonUpdate("Фамилия", mode, currentUser.UserLogin, UserPosition.GetPosition(currentUser.Rule));
+                }
+                if (oldPer.LastName != newPer.LastName)
+                {
+                    if (newPer.updateInfo == null)
+                    {
+                        newPer.updateInfo = new LogPersonUpdate("Имя", mode, currentUser.UserLogin, UserPosition.GetPosition(currentUser.Rule));
+                    }
+                    else
+                    {
+                        newPer.updateInfo.AddField("Имя");
+                    }
+                }
+                if (oldPer.SecondName != newPer.SecondName)
+                {
+                    if (newPer.updateInfo == null)
+                    {
+                        newPer.updateInfo = new LogPersonUpdate("Отчество", mode, currentUser.UserLogin, UserPosition.GetPosition(currentUser.Rule));
+                    }
+                    else
+                    {
+                        newPer.updateInfo.AddField("Отчество");
+                    }
+                }
+                if (oldPer.Pasport != newPer.Pasport)
+                {
+                    if (newPer.updateInfo == null)
+                    {
+                        newPer.updateInfo = new LogPersonUpdate("Паспорт", mode, currentUser.UserLogin, UserPosition.GetPosition(currentUser.Rule));
+                    }
+                    else
+                    {
+                        newPer.updateInfo.AddField("Паспорт");
+                    }
+                }
+                if (oldPer.Tlf != newPer.Tlf)
+                {
+                    if (newPer.updateInfo == null)
+                    {
+                        newPer.updateInfo = new LogPersonUpdate("Телефон", mode, currentUser.UserLogin, UserPosition.GetPosition(currentUser.Rule));
+                    }
+                    else
+                    {
+                        newPer.updateInfo.AddField("Телефон");
+                    }
+                }
+            }
+            using (StreamWriter outputFile = new StreamWriter(pathUpdateInfo, true))
+            {
+                if (newPer.updateInfo != null)
+                {
+                    outputFile.WriteLine(newPer.updateInfo.ToCsvString());
+                }
+            }
+            if (newPer.updateInfo == null)
+            {
+                newPer.updateInfo = oldPer.updateInfo;
             }
         }
     }
