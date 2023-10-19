@@ -9,11 +9,11 @@ Manager видит и редактирует все данные клиенто�
 
 Наиболее интересные примеры использования элементов WPF в окнах WPF :
 1. Label, Button, ListBox => MainWindow
-2. Button, ListView c Label и TextBox для отображения параметров Person => PersonWindow
+2. Button, ListView c Label и TextBox для отображения параметров Person => PersonWindow попытка реализации аналога PropertyGrid
 3. Label, Button, TextBox => PersonEditWindow с изменением свойств в зависимости от прав доступа
 4. Label, Button, PasswordBox => LoginWindow
 5. Button, DataGrid => ViewLogWindow
-6. Label, Button, TextBox, ListView, ComboBox, ContextMenu => UserEditWindow : ContextMenu вызывается по клику праврй кнопкой по строкам ListView с доступом к данным в этих строках; ComboBox в ячейке
+6. Label, Button, TextBox, ListView, ComboBox, ContextMenu => UserEditWindow : ContextMenu вызывается по клику правой кнопкой по строкам ListView с доступом к данным в этих строках; ComboBox в ячейке
    ListView с управлением данными экземпляра, отображаемого в этой строке.
 
-Скрин работы приложения MainWindow.jpg.
+Скрин работы приложения => MainWindow.jpg.
