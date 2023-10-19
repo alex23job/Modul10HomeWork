@@ -67,6 +67,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ChangePasswordWindow.xaml.cs">
+      <DependentUpon>ChangePasswordWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Person.cs" />
     <Compile Include="PersonEditWindow.xaml.cs">
       <DependentUpon>PersonEditWindow.xaml</DependentUpon>
@@ -75,6 +78,13 @@
       <DependentUpon>PersonWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserData.cs" />
+    <Compile Include="UserEditWindow.xaml.cs">
+      <DependentUpon>UserEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="ChangePasswordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -99,6 +109,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PersonWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserEditWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

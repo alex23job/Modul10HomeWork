@@ -55,6 +55,7 @@ namespace ConsultantWpfApp
                 dbClients.Add(new Person("Зорина", "Анастасия", "Евгеньевна", "0155 345689", "+79091357658"));
             }
             listDbView.ItemsSource = dbClients;
+            listDbView.SelectedIndex = 0;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -217,18 +218,28 @@ namespace ConsultantWpfApp
             if (!pw.SetParam((Person)listDbView.SelectedItem, currentUser)) return;
             if (pw.ShowDialog() == true)
             {
-
+                dbClients[listDbView.SelectedIndex] = pw.GetPerson();
+                listDbView.Items.Refresh();
             }
         }
 
         private void DelClick(object sender, RoutedEventArgs e)
         {
-
+            string info = string.Format("\"Фамилия: {0}   тлф: {1}\"", ((Person)listDbView.SelectedItem).Name, ((Person)listDbView.SelectedItem).Tlf);
+            if (MessageBox.Show($"Выбрана запись клиента : {info}\n\nУдалить запись ?", "Удаление записи клиента", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                dbClients.RemoveAt(listDbView.SelectedIndex);
+            }
         }
 
         private void btnEditUsersClick(object sender, RoutedEventArgs e)
         {
+            UserEditWindow uw = new UserEditWindow();
+            uw.SetUsers(dbUsers);
+            if (uw.ShowDialog() == true)
+            {
 
+            }
         }
     }
 }

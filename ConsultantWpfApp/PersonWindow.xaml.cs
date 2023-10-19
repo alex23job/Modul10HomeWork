@@ -54,12 +54,12 @@ namespace ConsultantWpfApp
 
         private void ClickOK(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = true;
             per.Name = ((MyParam)listView.Items[0]).paramValue;
             per.LastName = ((MyParam)listView.Items[1]).paramValue;
             per.SecondName = ((MyParam)listView.Items[2]).paramValue;
             per.Pasport = ((MyParam)listView.Items[3]).paramValue;
             per.Tlf = ((MyParam)listView.Items[4]).paramValue;
+            this.DialogResult = true;
         }
 
         private void ClickCansel(object sender, RoutedEventArgs e)

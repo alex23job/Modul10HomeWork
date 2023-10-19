@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ConsultantWpfApp"
         mc:Ignorable="d"
-        Title="Окно входа" Height="200" Width="400" HorizontalAlignment="Center" FontFamily="Times New Roman" FontSize="20" MinWidth="400" MinHeight="200" MaxWidth="400" MaxHeight="200" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Окно входа" Height="200" Width="400" HorizontalAlignment="Center" FontFamily="Times New Roman" FontSize="20" MinWidth="400" MinHeight="200" MaxWidth="400" MaxHeight="200" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="IconDarkBank.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>

@@ -37,7 +37,10 @@ namespace ConsultantWpfApp
             per.Name = txtName.Text;
             per.LastName = txtFirstName.Text;
             per.SecondName = txtSecondName.Text;
-            per.Pasport = txtPasport.Text;
+            if (txtPasport.Text != "**** ******")
+            {
+                per.Pasport = txtPasport.Text;
+            }
             per.Tlf = txtTlf.Text;
             this.DialogResult = true;
         }
@@ -45,6 +48,7 @@ namespace ConsultantWpfApp
         public bool SetParam(Person pr, UserData us)
         {
             user = us;
+            per = pr;
             IUserRights userRights = us as IUserRights;
             if (userRights == null)
             {
@@ -62,6 +66,11 @@ namespace ConsultantWpfApp
             txtPasport.IsEnabled = userRights.IsEditingField("Pasport");
             txtTlf.IsEnabled = userRights.IsEditingField("Tlf");
             return true;
+        }
+
+        public Person GetPerson()
+        {
+            return per;
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ConsultantWpfApp"
         mc:Ignorable="d"
-        Title="ПАРАМЕТРЫ КЛИЕНТА" Height="460" Width="500" ResizeMode="NoResize" FontFamily="Times New Roman" FontSize="24" MinWidth="500" MinHeight="460" MaxWidth="500" MaxHeight="480">
+        Title="ПАРАМЕТРЫ КЛИЕНТА" Height="460" Width="500" ResizeMode="NoResize" FontFamily="Times New Roman" FontSize="24" MinWidth="500" MinHeight="460" MaxWidth="500" MaxHeight="480" Icon="IconDarkBank.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
